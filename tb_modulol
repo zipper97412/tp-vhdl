@@ -1,0 +1,22 @@
+-- Code your testbench here
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity TB is
+end TB;
+
+architecture A_TB of TB is
+signal clk : std_logic := '0';
+signal rst : std_logic := '1';
+signal enable : std_logic := '0';
+signal deb : std_logic;
+signal out_count : std_logic_vector (3 downto 0);
+
+begin
+	clk <= not clk after 5ns;
+    rst <= '0' after 20ns;
+    enable <= '1' after 30ns;
+    compteur : entity compteur_N
+    generic map (4, 10)
+    port map(clk,rst,enable,deb,out_count);
+end architecture;
